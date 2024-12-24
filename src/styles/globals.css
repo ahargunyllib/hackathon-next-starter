@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
 	:root {
 		--background: 0 0% 100%;
@@ -87,23 +83,23 @@ body {
 	}
 
 	h1 {
-		@apply font-primary text-2xl font-bold md:text-4xl;
+		@apply text-2xl font-bold md:text-4xl;
 	}
 
 	h2 {
-		@apply font-primary text-xl font-bold md:text-3xl;
+		@apply text-xl font-bold md:text-3xl;
 	}
 
 	h3 {
-		@apply font-primary text-lg font-bold md:text-2xl;
+		@apply text-lg font-bold md:text-2xl;
 	}
 
 	h4 {
-		@apply font-primary text-base font-bold md:text-lg;
+		@apply text-base font-bold md:text-lg;
 	}
 
 	body {
-		@apply font-primary text-sm md:text-base;
+		@apply text-sm md:text-base;
 	}
 
 	.layout {
