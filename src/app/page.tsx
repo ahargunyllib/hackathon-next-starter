@@ -1,14 +1,14 @@
-import { BlogSection } from "@/components/features/home/BlogSection";
-import { CTASection } from "@/components/features/home/CTASection";
-import { ContactSection } from "@/components/features/home/ContactSection";
-import { FAQSection } from "@/components/features/home/FAQSection";
-import { FeatureSection } from "@/components/features/home/FeatureSection";
-import { HeroSection } from "@/components/features/home/HeroSection";
-import { SponsorSection } from "@/components/features/home/SponsorSection";
-import { StatsSection } from "@/components/features/home/StatsSection";
-import { TestimonialSection } from "@/components/features/home/TestimonialSection";
-import { Footer } from "@/components/shared/Footer";
-import { Header } from "@/components/shared/Header";
+import { BlogSection } from "@/features/home/components/BlogSection";
+import { CTASection } from "@/features/home/components/CTASection";
+import { ContactSection } from "@/features/home/components/ContactSection";
+import { FAQSection } from "@/features/home/components/FAQSection";
+import { FeatureSection } from "@/features/home/components/FeatureSection";
+import { HeroSection } from "@/features/home/components/HeroSection";
+import { SponsorSection } from "@/features/home/components/SponsorSection";
+import { StatsSection } from "@/features/home/components/StatsSection";
+import { TestimonialSection } from "@/features/home/components/TestimonialSection";
+import { Footer } from "@/shared/components/Footer";
+import { Header } from "@/shared/components/Header";
 
 export default function Home() {
 	return (

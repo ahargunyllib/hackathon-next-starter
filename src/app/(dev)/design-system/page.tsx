@@ -1,8 +1,8 @@
-import { ModeToggle } from "@/components/shared/ModeToggle";
-import UnstyledLink from "@/components/shared/UnstyledLink";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { ModeToggle } from "@/shared/components/ModeToggle";
+import UnstyledLink from "@/shared/components/UnstyledLink";
+import { Button } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+import { Textarea } from "@/shared/components/ui/textarea";
 import { LoaderCircle, MenuIcon, PlusIcon } from "lucide-react";
 
 export default function DesignSystemPage() {
