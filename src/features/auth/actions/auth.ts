@@ -1,14 +1,10 @@
 "use server";
 
-import {
-	createSession,
-	destroySession,
-	getSession,
-} from "@/shared/lib/session";
+import { createSession, destroySession } from "@/shared/lib/session";
 import { AuthService } from "../services/login";
-import type { ILoginRequest } from "../types/request";
+import type { TLoginRequest } from "../types/schema";
 
-export async function login(payload: ILoginRequest) {
+export async function login(payload: TLoginRequest) {
 	const res = await AuthService.login(payload);
 
 	if (res.success) {

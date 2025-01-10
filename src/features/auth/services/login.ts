@@ -1,9 +1,9 @@
 import { env } from "@/shared/lib/env";
 import { responseHandler } from "@/shared/lib/response-handler";
-import type { ILoginRequest } from "../types/request";
 import type { LoginResponse } from "../types/response";
+import type { TLoginRequest } from "../types/schema";
 
-export async function login(payload: ILoginRequest) {
+export async function login(payload: TLoginRequest) {
 	const response = await fetch(`${env.API_URL}/auth/login`, {
 		method: "POST",
 		headers: {
