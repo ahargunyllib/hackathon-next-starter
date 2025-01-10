@@ -1,9 +1,9 @@
-import type { IUser } from "@/shared/types/user";
 import { type SessionOptions, getIronSession } from "iron-session";
 import { cookies } from "next/headers";
 import { decodeToken } from "./decode";
 import { env } from "./env";
 
+// 8 hours in milliseconds
 const MAX_AGE = 8 * 60 * 60 * 1000;
 
 export interface SessionData {
@@ -18,10 +18,11 @@ export const defaultSession: SessionData = {
 };
 
 export const sessionOptions: SessionOptions = {
-	password: env.SESSION_PASSWORD ?? "default-session-secret",
-	cookieName: "iron-examples-app-router-client-component-route-handler-swr",
+	password: env.SESSION_PASSWORD,
+	cookieName: "session-cookie",
 	cookieOptions: {
-		maxAge: MAX_AGE - 60,
+		//  allow 1 minute buffer
+		maxAge: MAX_AGE - 60 * 1000,
 		secure: true,
 	},
 };
@@ -32,7 +33,7 @@ export async function getSession() {
 		sessionOptions,
 	);
 
-	if (session.isLoggedIn !== true) {
+	if (!session.isLoggedIn) {
 		session.isLoggedIn = defaultSession.isLoggedIn;
 		session.token = defaultSession.token;
 		session.role = defaultSession.role;
@@ -48,13 +49,6 @@ export async function createSession(token: string) {
 	session.isLoggedIn = true;
 	session.token = token;
 	session.role = decoded.role_name;
-
-	session.updateConfig({
-		...sessionOptions,
-		cookieOptions: {
-			maxAge: decoded.exp * 1000 - Date.now() - 60,
-		},
-	});
 
 	await session.save();
 }
