@@ -9,6 +9,7 @@ import {
 	Sparkles,
 } from "lucide-react";
 
+import { logout } from "@/features/auth/actions/auth";
 import {
 	Avatar,
 	AvatarFallback,
@@ -102,7 +103,7 @@ export function NavUser({
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem>
+						<DropdownMenuItem onClick={() => logout()}>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>
