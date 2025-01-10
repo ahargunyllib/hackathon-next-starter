@@ -2,13 +2,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
 import { login } from "../actions/auth";
-
-const LoginSchema = z.object({
-	email: z.string().email("Invalid email address"),
-	password: z.string().min(6),
-});
+import { LoginSchema } from "../types/schema";
 
 export const useLoginForm = () => {
 	const router = useRouter();
@@ -21,14 +16,17 @@ export const useLoginForm = () => {
 	});
 
 	const onSubmitHandler = form.handleSubmit(async (data) => {
-		const res = await login(data);
-		if (res.success) {
-			toast.success(res.message);
-			router.push("/dashboard");
-		} else {
-			toast.error(res.message);
-			console.log(res.message);
-		}
+		toast.promise(login(data), {
+			loading: "Logging in...",
+			success: (res) => {
+				router.push("/dashboard");
+				return "Logged in successfully!";
+			},
+			error: (err) => {
+				console.log(err.message);
+				return err.message;
+			},
+		});
 	});
 
 	return {
