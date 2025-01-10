@@ -14,10 +14,6 @@ export async function middleware(req: NextRequest) {
 		sessionOptions,
 	);
 
-	if (session.isLoggedIn) {
-		return NextResponse.redirect(new URL("/", req.nextUrl));
-	}
-
 	if (!session.isLoggedIn && pathname.startsWith("/dashboard")) {
 		return NextResponse.redirect(new URL("/login", req.nextUrl));
 	}
@@ -26,5 +22,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-	matcher: ["/login", "/dashboard/:path*"],
+	matcher: ["/dashboard/:path*"],
 };
