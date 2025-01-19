@@ -20,7 +20,6 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/shared/components/ui/form";
-import { useRouter } from "next/navigation";
 import { useLoginForm } from "../hooks/useLoginForm";
 
 export function LoginForm({
@@ -108,7 +107,11 @@ export function LoginForm({
 											)}
 										/>
 									</div>
-									<Button type="submit" className="w-full">
+									<Button
+										type="submit"
+										className="w-full"
+										disabled={form.formState.isSubmitted}
+									>
 										Login
 									</Button>
 								</div>

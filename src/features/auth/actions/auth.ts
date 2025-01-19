@@ -7,10 +7,12 @@ import type { TLoginRequest } from "../types/schema";
 export async function login(payload: TLoginRequest) {
 	const res = await AuthService.login(payload);
 
-	if (res.success) {
-		await createSession(res.data.access_token);
+	if (!res.success) {
+		// Throwing for toast.promise to catch and display the error message
+		throw new Error(res.message);
 	}
 
+	await createSession(res.data.access_token);
 	return res;
 }
 
